@@ -1,0 +1,274 @@
+/* ======================== RESET ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ======================== FONTES ======================== */
+.roboto {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.title {
+  font-family: "Fascinate Inline", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 80px;
+  color: white;
+  background-color: transparent;
+}
+
+/* ======================== GERAL ======================== */
+body {
+  font-family: Arial, sans-serif;
+  background: url("https://images.unsplash.com/photo-1663970206579-c157cba7edda?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+header, footer {
+  text-align: center;
+  background-color: #222;
+  color: white;
+  padding: 15px;
+}
+
+main {
+  padding: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.botao {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,123,255,0.6);
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* ======================== FORMULÁRIO PAGAMENTO ======================== */
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 30px auto;
+  gap: 15px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+#btn-finalizar {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #0036e7;
+  box-shadow: 0 0 10px rgba(0,123,255,0.6);
+  color: white;
+}
+
+#btn-finalizar:hover {
+  background-color: #bfbfff;
+}
+
+/* ======================== WRAPPER ======================== */
+.wrapper {
+  background-color: rgba(255,255,255,0.226);
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* ======================== CARRINHO ======================== */
+.cartTab {
+  width: 400px;
+  background-color: #353432;
+  color: #eee;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: 70px 1fr 70px;
+  transition: .5s;
+}
+
+body.showCart .cartTab {
+  right: 0;
+}
+
+body.showCart .container {
+  transform: translateX(-250px);
+}
+
+.cartTab h1 {
+  padding: 20px;
+  font-weight: 300;
+}
+
+.cartTab .btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab button {
+  font-family: Poppins;
+  font-weight: 500;
+  border: none;
+}
+
+.cartTab .close {
+  background-color: #eee;
+}
+
+.listCart {
+  overflow: auto;
+}
+
+.listCart::-webkit-scrollbar {
+  width: 0;
+}
+
+.listCart .item {
+  display: grid;
+  grid-template-columns: 70px 150px 50px 1fr;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+}
+
+.listCart .item img {
+  width: 100%;
+}
+
+.listCart .quantity span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  color: #555;
+  cursor: pointer;
+}
+
+.listCart .quantity span:nth-child(2) {
+  background-color: transparent;
+  color: #eee;
+  cursor: auto;
+}
+
+.listCart .item:nth-child(even) {
+  background-color: #eee1;
+}
+
+/* ======================== RESPONSIVO ======================== */
+@media only screen and (max-width: 992px) {
+  .listProduct {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ======================== CARDS ======================== */
+.card {
+  border-radius: 16px;
+  background-color: white;
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 48px 100px 0px;
+  height: 150px;
+}
+
+.card-img-top {
+  width: 275px;
+  height: 275px;
+  background-position: center;
+  background-size: cover;
+}
+
+.phone {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* ======================== RESUMO PEDIDO (INDEX2) ======================== */
+.resumo-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+}
+
+.pedido-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.pedido-item img {
+  width: 80px;
+  border-radius: 8px;
+}
+
+.pedido-item .info p {
+  margin: 2px 0;
+}
+
+.produto-nome {
+  font-size: 18px;
+}
+
+/* ======================== CORES ======================== */
+.cor {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.cor:hover {
+  transform: scale(1.1);
+}
+
+.cor.selecionada {
+  border-color: #007bff;
+  box-shadow: 0 0 10px rgba(0,123,255,0.6);
+}
+
+/* ======================== BUSCA ======================== */
+.busca {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.busca input {
+  width: 50%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}

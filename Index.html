@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoundWave</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    <header>
+      <div class="title">SoundWave</div>
+
+      <div class="icon-cart">
+        <svg class="w-6 h-6 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+          viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+        </svg>
+        <span>0</span>
+      </div>
+    </header>
+
+    <div class="roboto">
+
+      <!-- BARRA DE BUSCA -->
+      <div class="busca">
+        <input type="text" placeholder="Buscar produtos..." id="searchInput">
+      </div>
+
+      <main class="container">
+
+        <!-- -------------------------- PRODUTOS ------------------------------ -->
+
+        <div class="phone">
+
+          <!-- PRODUTO 1 -->
+          <div class="card product" data-id="1" style="width: 18rem;">
+            <img src="./fone2.png" class="card-img-top" alt="Airpods Pro">
+            <div class="card-body">
+              <h5 class="card-title">Airpods Pro</h5>
+              <p class="card-text">Fone Integrado ao Iphone Via Bluetooth.</p>
+              <p class="card-text">R$1000</p>
+              <button class="addCart">Adicionar ao carrinho</button>
+            </div>
+          </div>
+
+          <!-- PRODUTO 2 -->
+          <div class="card product" data-id="2" style="width: 18rem;">
+            <img src="fone2geração.png" class="card-img-top" alt="Airpods 2ª geração">
+            <div class="card-body">
+              <h5 class="card-title">Airpods 2ª Geração</h5>
+              <p class="card-text">Cancelamento de ruído até 2x melhor.</p>
+              <p class="card-text">R$1200</p>
+              <button class="addCart">Adicionar ao carrinho</button>
+            </div>
+          </div>
+
+          <!-- PRODUTO 3 -->
+          <div class="card product" data-id="3" style="width: 18rem;">
+            <img src="./airpodsmax.png" class="card-img-top" alt="Airpods Max">
+            <div class="card-body">
+              <h5 class="card-title">Airpods Max</h5>
+              <p class="card-text">Headphone com design exclusivo e confortável.</p>
+              <p class="card-text">R$2500</p>
+              <button class="addCart">Adicionar ao carrinho</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- --------------------------- CARRINHO ---------------------------- -->
+
+        <div class="cartTab">
+          <h1>Carrinho</h1>
+
+          <div class="listCart"></div>
+
+          <div class="btn">
+            <button class="close">Fechar</button>
+            <a href="Index2.html"><button class="checkOut">Finalizar Compra</button></a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="./scriptsite.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
+
+</body>
+</html>
