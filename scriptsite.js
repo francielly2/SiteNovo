@@ -23,51 +23,51 @@ let products = [
 ];
 // ======================================================================
 
-let listCartHTML = document.querySelector('.listCart');
-let iconCart = document.querySelector('.icon-cart');
-let iconCartSpan = document.querySelector('.icon-cart span');
-let body = document.querySelector('body');
-let closeCart = document.querySelector('.close');
+let list_cart_HTML = document.query_selector('.listCart');
+let icon_cart = document.query_selector('.icon-cart');
+let icon_cart_span = document.query_selector('.icon-cart span');
+let body = document.query_selector('body');
+let close_cart = document.query_selector('.close');
 
 let cart = [];
 
 // ---------------------------------------------------------------------
 // 6.2: ESTRUTURA SWITCH
 // Abrir/Fechar Carrinho usando SWITCH para demonstração
-function toggleCart(action) {
+function toggle_cart(action) {
     switch (action) {
         case 'open':
-            body.classList.add('showCart');
+            body.classList.add('show_cart');
             break;
         case 'close':
-            body.classList.remove('showCart');
+            body.classList.remove('show_cart');
             break;
         default:
-            body.classList.toggle('showCart');
+            body.classList.toggle('show_cart');
     }
 }
 
-iconCart.addEventListener('click', () => {
-    toggleCart('toggle');
+icon_cart.add_event_listener('click', () => {
+    toggle_cart('toggle');
 });
 
-closeCart.addEventListener('click', () => {
-    toggleCart('close');
+close_cart.add_event_listener('click', () => {
+    toggle_cart('close');
 });
 // ---------------------------------------------------------------------
 
 // ADICIONAR AO CARRINHO (BOTÕES ESTÁTICOS dos cards)
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("addCart")) {
+document.add_event_listener("click", (event) => {
+    if (event.target.classList.contains("add_cart")) {
         let card = event.target.closest(".product");
         let id_product = card.dataset.id;
-        addToCart(id_product);
-        toggleCart('open'); // Abre o carrinho
+        add_to_cart(id_product);
+        toggle_cart('open'); // Abre o carrinho
     }
 });
 
-function addToCart(product_id) {
-    let pos = cart.findIndex(item => item.product_id == product_id);
+function add_to_cart(product_id) {
+    let pos = cart.find_index(item => item.product_id == product_id);
 
     if (pos < 0) {
         cart.push({ product_id, quantity: 1 });
@@ -75,22 +75,22 @@ function addToCart(product_id) {
         cart[pos].quantity++;
     }
 
-    saveCart();
-    renderCart();
+    save_cart();
+    render_cart();
 }
 
 // Salvar (9.1)
-function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
+function save_cart() {
+    local_storage.set_item("cart", JSON.stringify(cart));
 }
 
 // 5.1: EXEMPLO DE LAÇO FOR
 // Função para calcular o total usando FOR tradicional
-function calculateTotalFor() {
+function calculate_total_for() {
     let total = 0;
     
     // O laço FOR tradicional é útil para iterar arrays e calcular somas
-    for (let i = 0; i < cart.length; i++) {
+    for (let i = 0; i < cart_length; i++) {
         let item = cart[i];
         let product = products.find(p => p.id == item.product_id);
         if (product) {
@@ -101,15 +101,15 @@ function calculateTotalFor() {
 }
 
 // Mostrar carrinho no Index
-function renderCart() {
-    listCartHTML.innerHTML = "";
-    let totalQty = 0;
+function render_cart() {
+    list_cart_HTML.innerHTML = "";
+    let total_qty = 0;
 
-    cart.forEach(item => {
+    cart.for_each(item => {
         let product = products.find(p => p.id == item.product_id);
-        totalQty += item.quantity;
+        total_qty += item.quantity;
 
-        let div = document.createElement("div");
+        let div = document.create_element("div");
         div.classList.add("item");
 
         // 3.2: Uso de Template Literals e toFixed(2)
@@ -124,32 +124,32 @@ function renderCart() {
             </div>
         `;
 
-        listCartHTML.appendChild(div);
+        list_cart_HTML.appendChild(div);
     });
 
-    iconCartSpan.innerText = totalQty;
+    icon_cart_span.innerText = total_qty;
     
     // Atualiza o total usando a função com FOR
-    const totalPriceElement = document.querySelector('.total-price-cart');
-    if (totalPriceElement) {
-        totalPriceElement.innerText = `R$${calculateTotalFor().toFixed(2)}`;
+    const total_price_element = document.query_selector('.total-price-cart');
+    if (total_price_element) {
+        total_price_element.innerText = `R$${calculate_total_for().toFixed(2)}`;
     }
 }
 
 // Botões + -
-listCartHTML.addEventListener("click", (event) => {
+list_cart_HTML.add_event_listener("click", (event) => {
     let element = event.target;
     let id = element.dataset.id; 
 
     if (element.classList.contains("minus") || element.classList.contains("plus")) {
         // 6.3: USO DO OPERADOR TERNÁRIO
-        updateQuantity(id, element.classList.contains("plus") ? "plus" : "minus");
+        update_quantity(id, element.classList.contains("plus") ? "plus" : "minus");
     }
 });
 
 // 3.6: OPERADOR LÓGICO (&&)
-function updateQuantity(id, type) {
-    let pos = cart.findIndex(p => p.product_id == id);
+function update_quantity(id, type) {
+    let pos = cart.find_index(p => p.product_id == id);
 
     if (type === "plus") {
         // 3.5: INCREMENTO
@@ -163,31 +163,31 @@ function updateQuantity(id, type) {
         }
     }
 
-    saveCart();
-    renderCart();
+    save_cart();
+    render_cart();
 }
 
 // 5.3: EXEMPLO DE LAÇO WHILE
 // Função de utilidade que demonstra o uso de WHILE
-function checkStock(productId) {
+function check_stock(product_id) {
     let stock = 10; // Exemplo: estoque inicial
     let check = 0;
     
     // O laço WHILE é ideal para loops de condição incerta
     while (check < stock) {
         if (check === 5) {
-            console.log(`Estoque do produto ${productId} está na metade (${check}).`);
+            console.log(`Estoque do produto ${product_id} está na metade (${check}).`);
         }
         check++;
     }
-    // console.log(`Verificação de estoque para o produto ${productId} concluída.`);
+    // console.log(`Verificação de estoque para o produto ${product_id} concluída.`);
     return stock;
 }
 
 // Inicializar carrinho salvo
-if (localStorage.getItem("cart")) {
-    cart = JSON.parse(localStorage.getItem("cart"));
-    renderCart();
+if (local_storage.get_item("cart")) {
+    cart = JSON.parse(local_storage.get_item("cart"));
+    render_cart();
 }
 
 
@@ -196,17 +196,17 @@ if (localStorage.getItem("cart")) {
 // ---------------------------------------------------------------------
 
 if (window.location.pathname.includes("Index2.html")) {
-    let pedidoDiv = document.getElementById("resumo-pedido");
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let pedido_div = document.get_element_by_id("resumo-pedido");
+    let cart = JSON.parse(local_storage.get_item("cart")) || [];
 
-    let totalPedido = calculateTotalFor(); 
+    let total_pedido = calculate_total_for(); 
 
     if (cart.length === 0) {
-        pedidoDiv.innerHTML = `<h2>Nenhum item no carrinho.</h2>`;
+        pedido_div.innerHTML = `<h2>Nenhum item no carrinho.</h2>`;
     } else {
-        let html = `<h3 class="total-price-cart">Total do Pedido: R$${totalPedido.toFixed(2)}</h3>`;
+        let html = `<h3 class="total-price-cart">Total do Pedido: R$${total_pedido.to_fixed(2)}</h3>`;
 
-        cart.forEach(item => {
+        cart.for_each(item => {
             let product = products.find(p => p.id == item.product_id);
 
             html += `
@@ -215,15 +215,15 @@ if (window.location.pathname.includes("Index2.html")) {
                     <div class="info">
                         <p class="produto-nome"><strong>${product.name}</strong></p>
                         <p>Quantidade: ${item.quantity}</p>
-                        <p>Preço unitário: R$${product.price.toFixed(2)}</p>
-                        <strong>Subtotal: R$${(product.price * item.quantity).toFixed(2)}</strong>
+                        <p>Preço unitário: R$${product.price.to_fixed(2)}</p>
+                        <strong>Subtotal: R$${(product.price * item.quantity).to_fixed(2)}</strong>
                     </div>
                 </div>
             `;
             // Exemplo de uso da função WHILE
-            checkStock(product.id); 
+            check_stock(product.id); 
         });
 
-        pedidoDiv.innerHTML = html;
+        pedido_div.innerHTML = html;
     }
 }
